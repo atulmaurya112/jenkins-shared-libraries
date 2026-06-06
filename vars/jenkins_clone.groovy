@@ -1,11 +1,3 @@
-def call() {
-    git url: 'https://github.com/atulmaurya112/test-web-app',
-        branch: 'main'
-
-    sh '''
-        pwd
-        ls -la
-        git branch
-        git remote -v
-    '''
+def call(String url, String branch) {
+    git url: url, branch: branch
 }

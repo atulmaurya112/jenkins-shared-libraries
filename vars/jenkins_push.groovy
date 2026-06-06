@@ -6,7 +6,7 @@ def call(String app, String tag, String username) {
     )]) {
         sh """
         echo "\$DOCKER_PASSWORD" | docker login -u "\$DOCKER_USERNAME" --password-stdin
-        docker tag ${app}:$tag} ${username}/${app}:${tag}
+        docker tag ${app}:${tag} ${username}/${app}:${tag}
         docker push ${username}/${app}:${tag}
         """
     }

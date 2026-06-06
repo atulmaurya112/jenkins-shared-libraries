@@ -1,4 +1,4 @@
-def call() {
+def call(String app, String tag, String username) {
     withCredentials([usernamePassword(
         credentialsId: 'dockerHubCredential',
         usernameVariable: 'DOCKER_USERNAME',
@@ -6,8 +6,8 @@ def call() {
     )]) {
         sh '''
         echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        docker tag web-app:latest atulmaurya112/web-app:latest
-        docker push atulmaurya112/web-app:latest
+        docker tag ${app}:$tag} ${username}/${app}:${tag}
+        docker push ${username}/${app}:${tag}
         '''   
     }
 }
